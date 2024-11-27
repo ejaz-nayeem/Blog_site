@@ -1,0 +1,19 @@
+<form method="get" action="{% url 'blog:post_search' %}">
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+
+<h2>Total Results: {{ total_results }}</h2>
+
+{% if results %}
+    <ul>
+        {% for post in results %}
+            <li>
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts found.</p>
+{% endif %}
+
